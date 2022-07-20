@@ -34,7 +34,7 @@ def query_data(instance_id, database_id):
 
 
 
-def hello(request):
+def render(request):
     return render_template_string(
         INDEX_TEMPLATE, places=query_data("bitfoon-dev","finance")
     )
