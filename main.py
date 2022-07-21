@@ -35,6 +35,6 @@ def query_data(instance_id, database_id):
 
 
 def render(request):
-    return render_template_string(
-        INDEX_TEMPLATE, places=query_data("bitfoon-dev","finance")
+    return render_template(
+        "hello.html", places=query_data("bitfoon-dev","finance")
     )
