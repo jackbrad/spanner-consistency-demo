@@ -1,0 +1,1 @@
+gcloud functions deploy check_account   --source https://source.developers.google.com/projects/spanner-consistency-demo/repos/github_jackbrad_spanner-consistency-demo/moveable-aliases/main/paths//   --runtime python310 --trigger-http --security-level=secure-optional
