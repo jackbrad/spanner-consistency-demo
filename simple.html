@@ -7,80 +7,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script type="text/javascript"> 
-       $(document).ready(function(){
-     // jQuery methods go here...
-        $("button").click(function(){
+    <script type="text/javascript">
+        $(document).ready(function () {
             
-            var jqxhr = $.post( "https://europe-west3-bitfoon-dev.cloudfunctions.net/check_balance_eu", function() {
-            alert( "success" );
-            })
-            .done(function() {
-                alert( "second success" );
-            })
-            .fail(function() {
-                alert( "error" );
-            })
-            .always(function() {
-                alert( "finished" );
+            $("#SendMoney").click(function () {
+                //send a transfer request to spanner
+                
+                $("#SendMoney").prop('disabled',true);
+                $("#results").html = "finally"
+                
+                //form data url
+                url_update = "https://us-central1-bitfoon-dev.cloudfunctions.net/function-1"
+                
+                var jqxhr = $.post(urlf)
+                .done(function(data) {
+                    
+                })
+                .fail(function() {
+                })
+                .always(function() {
+                    //pageUpdate();
+                    $("#SendMoney").prop('disabled',false);
+                }) 
             });
-            
-            // Perform other work here ...
-            // Set another completion function for the request above
-            jqxhr.always(function() {
-            alert( "second finished" );
-            });
-
-
-
-
-        });
-
-
-
-
-
         });
     </script>
 </head>
 
 <body>
-    <div style="font-size: 20PX;">Venzel</div>
-   
-    <table border="2">
-        <tr>
-            <td>
-                <br>
-                Send money....
-                <br>
-                Choose to account:<select>
-                    <option value="x">X</option>
-                    <option value="y">Y</option>
-                    <option value="z">Z</option>
-                </select>
-                <br>Amount:
-                <input type="text">
-                <button>Click me to hide paragraphs</button>
-            </td>
-            <td>Account Info: ID, Balance
-                <br>
-                <br><br>
-                <table border="2">
-                    <tr>
-                        <td>Amount</td>
-                        <td>TimeStamp</td>
-                    </tr>
-                    <tr>
-                        <td>xxxx</td>
-                        <td>yyyy</td>
-                    </tr>
-                </table>
+    <span id="results">hello</span>
+    
+    <div >
+        <div style="font-size:x-large">Venzel</div>
+        <div style="font-size:small">The fakest way to pay three fake friends &copy; 2022</div>
+        <br><br>
+        <table border="2">
+            <tr>
+                <td>
+                    You are: <span id="#player"></span><br>
+                    Your Account Info is:
+                    <table>
+                        <tr>
+                            <td>Account ID: </td>
+                            <td><span id="#accountId"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Balance: </td>
+                            <td><span id="#balance"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Last Updated:
+                            </td>
+                            <td><span id="#lastupdate"></span></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <br>
+                    Send money....
+                    <br>
+                    From:<select>
+                        <option value="x">Jack</option>
+                        <option value="y">Aalok</option>
+                        <option value="z">Ajaya</option>
+                    </select>
+                    <br>To:<br>Choose to account:<select>
+                        <option value="x">Jack</option>
+                        <option value="y">Aalok</option>
+                        <option value="z">Ajaya</option>
+                    </select>
+                    <br>Amount:<input type="text">
+                    <button id="SendMoney">Send Money</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
 
-            </td>
-
-        </tr>
-    </table>
-
+                    <br>
+                    <br>
+                    <table border="2">
+                        <tr>
+                            <td>Amount</td>
+                            <td>TimeStamp</td>
+                        </tr>
+                        <tr>
+                            <td>xxxx</td>
+                            <td>yyyy</td>
+                        </tr>
+                    </table>
+    
+                </td>
+            </tr>
+        </table>
+</div>
 </body>
 
 </html>
